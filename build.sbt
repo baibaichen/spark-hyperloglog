@@ -18,13 +18,13 @@ fork in Test := true
 
 resolvers += "Cloudera"            at "https://repository.cloudera.com/artifactory/cloudera-repos/"
 
-resolvers += "Collective Bintray"  at "http://dl.bintray.com/collectivemedia/releases"
+resolvers += "Collective Bintray"  at "https://bintray.com/artifact/download/collectivemedia/releases"
 
 // Library Dependencies
 
 libraryDependencies ++= Seq(
-  "org.apache.spark"         %% "spark-core"      % "1.4.0",
-  "org.apache.spark"         %% "spark-sql"       % "1.4.0",
+  "org.apache.spark"         %% "spark-core"      % "1.5.1",
+  "org.apache.spark"         %% "spark-sql"       % "1.5.1",
   "org.scala-tools.sbinary"  %% "sbinary"         % "0.4.2",
   "com.adroll.cantor"         % "cantor"          % "1.0.6"
 )
