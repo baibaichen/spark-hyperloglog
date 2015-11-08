@@ -4,7 +4,7 @@ version := "0.0.1"
 
 organization := "com.collective.analytics"
 
-scalaVersion := "2.10.5"
+scalaVersion := "2.10.4"
 
 scalacOptions += "-deprecation"
 
