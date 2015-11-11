@@ -16,8 +16,8 @@ class SparkAudienceAnalytics(aggregate: AggregateImpressionLog) extends Audience
 
   def audienceEstimate(ads: Vector[String], sites: Vector[String]): AudienceEstimate = {
     val row = activity.filter(
-      (col(ActivityLog.ad_id)   in (ads.map(lit): _*))     or
-      (col(ActivityLog.site_id) in (sites.map(lit): _*))
+      (col(ActivityLog.ad_id)   isin (ads.map(lit): _*))     or
+      (col(ActivityLog.site_id) isin (sites.map(lit): _*))
     ).select(
         mergeHyperLogLog(col(ActivityLog.cookies_hll)),
         sum(col(ActivityLog.impressions)),
@@ -33,7 +33,7 @@ class SparkAudienceAnalytics(aggregate: AggregateImpressionLog) extends Audience
 
   def segmentsEstimate(segments: Vector[String]): SegmentsEstimate = {
     val row = self.segments.filter(
-      col(SegmentLog.segment) in (segments.map(lit): _*)
+      col(SegmentLog.segment) isin  (segments.map(lit): _*)
     ).select(
         mergeHyperLogLog(col(SegmentLog.cookies_hll)),
         sum(col(SegmentLog.impressions)),
